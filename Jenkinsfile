@@ -80,7 +80,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh '''
-                    cp -r . /var/www/todoapp/
+                    sudo cp -r . /var/www/todoapp/
                     cd /var/www/todoapp
                     npm ci --omit=dev
                     sudo systemctl restart todoapp
