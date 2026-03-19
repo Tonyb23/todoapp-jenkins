@@ -59,7 +59,7 @@ app.delete('/api/todos/:id', (req, res) => {
 
 // GET /health -- health check for the pipeline
 app.get('/health', (req, res) => {
-    res.json({ status: 'failed', todos: todos.length, version: '2.0' });
+    res.json({ status: 'healthy', todos: todos.length, version: '2.0' });
 });
 
 module.exports = app;
