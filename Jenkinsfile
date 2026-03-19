@@ -82,7 +82,7 @@ pipeline {
                 sh '''
                     sudo cp -r . /var/www/todoapp/
                     cd /var/www/todoapp
-                    sudo chown -R jenkins:jenkins /var/www/todoapp
+                    sudo chown -R jenkins:sharedgroup /var/www/todoapp
                     npm ci --omit=dev
                     sudo systemctl restart todoapp
                     sudo systemctl status todoapp --no-pager
