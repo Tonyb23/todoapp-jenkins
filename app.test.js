@@ -17,7 +17,7 @@ describe('Todo API', () => {
         const res = await request(app)
             .post('/api/todos')
             .send({ text: 'Buy groceries' });
-        expect(res.statusCode).toBe(999);
+        expect(res.statusCode).toBe(201);
         expect(res.body.text).toBe('Buy groceries');
         expect(res.body.completed).toBe(false);
         expect(res.body.id).toBeDefined();
