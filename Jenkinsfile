@@ -85,6 +85,15 @@ pipeline {
                     sudo chown -R jenkins:sharedgroup /var/www/todoapp
                     npm ci --omit=dev
                     sudo systemctl restart todoapp
+                    echo "Waiting 5 seconds for service to initialize..."
+                    sleep 5
+                    echo "Running health check..."
+                    if curl -s -o /dev/null -I -w "%{http_code}" http://localhost:3000/health | grep -q "200"; then
+                        echo "Health check passed!"
+                    else
+                        echo "ERROR: Health check failed! Service returned non-200 status."
+                        exit 1
+                    fi
                     sudo systemctl status todoapp --no-pager
                 '''
                 echo 'Deployment complete'
